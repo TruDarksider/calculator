@@ -2,6 +2,7 @@ let num1;
 let num2;
 let operand;
 let displayText = "";
+let historyText = "";
 
 const currentInput = document.querySelector('#currentInput');
 const display = document.querySelector('#display');
@@ -23,31 +24,48 @@ operators.addEventListener('click', (e)=>{
         if(num1!=undefined){
             num2=displayText;
             console.log(operand, num1, num2);
-            num1 = operate(operand,num1,num2);
+            operate(operand,num1,num2);
+            num1 = currentInput.textContent;
+            console.log(operand, num1, num2);
             num2 = "";
+            operand = e.target.id;
+            historyText+=displayText + " " + operand + " ";
             displayText = "";
+            history.textContent = historyText;
+            console.log(operand, num1, num2);
             return;
         }
         num1=displayText;
         operand = e.target.id;
+        historyText+=displayText + " " + operand + " ";
+        history.textContent = historyText;
         displayText="";
+        currentInput.textContent = displayText;
+        console.log(operand, num1, num2);
     }
 })
 
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', ()=>{
+    num1 = undefined;
+    num2 = undefined;
+    operand = undefined;
     displayText = "";
+    historyText = "";
     currentInput.textContent = displayText;
+    history.textContent = historyText;
 })
 
 
-function add(num1, num2){return num1+num2;}
+function add(num1, num2){return Number(num1)+Number(num2);}
 
-function subtract(num1, num2){return num1-num2;}
+function subtract(num1, num2){return Number(num1)-Number(num2);}
 
-function multiply(num1, num2){return num1*num2;}
+function multiply(num1, num2){return Number(num1)*Number(num2);}
 
-function divide(num1, num2){return num1/num2;}
+function divide(num1, num2){
+    if(Number(num2)===0){return "Stop It";}
+    return Number(num1)/Number(num2);}
 
 function operate(operand, num1, num2){
     switch(operand){
