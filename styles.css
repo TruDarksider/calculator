@@ -39,6 +39,8 @@ align-items: center;
     width: 260px;
     display: flex;
     flex: 1;
+    align-items: flex-end;
+    justify-content: end;
 }
 
 #display {
@@ -51,8 +53,6 @@ height: 80px;
 flex-direction: column;
 display: flex;
 flex: 0 1 auto;
-align-items: flex-end;
-justify-content: end;
 }
 
 #history{
@@ -60,6 +60,8 @@ justify-content: end;
     width: 260px;
     display: flex;
     flex: 1;
+    align-items: flex-end;
+    justify-content: end;
 }
 
 #numbers {
