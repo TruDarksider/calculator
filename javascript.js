@@ -23,16 +23,13 @@ operators.addEventListener('click', (e)=>{
     if(e.target.classList.contains('operator')){
         if(num1!=undefined){
             num2=displayText;
-            console.log(operand, num1, num2);
             operate(operand,num1,num2);
             num1 = currentInput.textContent;
-            console.log(operand, num1, num2);
             num2 = "";
             operand = e.target.id;
             historyText+=displayText + " " + operand + " ";
             displayText = "";
             history.textContent = historyText;
-            console.log(operand, num1, num2);
             return;
         }
         num1=displayText;
@@ -41,7 +38,6 @@ operators.addEventListener('click', (e)=>{
         history.textContent = historyText;
         displayText="";
         currentInput.textContent = displayText;
-        console.log(operand, num1, num2);
     }
 })
 
@@ -56,6 +52,16 @@ clear.addEventListener('click', ()=>{
     history.textContent = historyText;
 })
 
+const equals = document.querySelector('#equals');
+equals.addEventListener('click', ()=>{
+    num2=displayText;
+    operate(operand,num1,num2);
+    historyText+=displayText + " = ";
+    displayText = "";
+    history.textContent = historyText;
+    num1=undefined;
+    historyText = "";
+})
 
 function add(num1, num2){return Number(num1)+Number(num2);}
 
